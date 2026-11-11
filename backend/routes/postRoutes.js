@@ -1,0 +1,13 @@
+import express from 'express';
+import { query } from 'express-validator';
+import { getFeed,createPost,likePost,addComment,deletePost,getPopular } from '../controllers/postController.js';
+import { protect } from '../middleware/auth.js';
+import { postValidation,commentValidation,paginationValidation,validate,validateId } from '../middleware/validate.js';
+import { asyncHandler as wrap } from '../middleware/asyncHandler.js';
+import { cacheFeed } from '../services/cache.js';
+const router=express.Router();router.use(protect);router.param('id',validateId);
+router.get('/feed',validate([...paginationValidation,query('scope').optional().isIn(['all','network'])]),cacheFeed,wrap(getFeed));
+router.get('/popular',cacheFeed,wrap(getPopular));
+router.post('/',validate(postValidation),wrap(createPost));router.put('/:id/like',wrap(likePost));
+router.post('/:id/comments',validate(commentValidation),wrap(addComment));router.delete('/:id',wrap(deletePost));
+export default router;

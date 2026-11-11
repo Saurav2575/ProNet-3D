@@ -1,0 +1,12 @@
+import express from 'express';
+import { register,login,getMe,refresh,logout } from '../controllers/authController.js';
+import { protect } from '../middleware/auth.js';
+import { authLimiter } from '../middleware/rateLimiter.js';
+import { registerValidation,loginValidation,validate } from '../middleware/validate.js';
+import { asyncHandler as wrap } from '../middleware/asyncHandler.js';
+const router=express.Router();
+router.post('/register',authLimiter,validate(registerValidation),wrap(register));
+router.post('/login',authLimiter,validate(loginValidation),wrap(login));
+router.post('/refresh',authLimiter,wrap(refresh));
+router.post('/logout',wrap(logout));router.get('/me',protect,wrap(getMe));
+export default router;

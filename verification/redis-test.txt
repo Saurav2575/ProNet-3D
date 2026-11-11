@@ -1,0 +1,1 @@
+PASS: Real Redis 7.4.2 stores and retrieves feed JSON and increments the invalidation generation.

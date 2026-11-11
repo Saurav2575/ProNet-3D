@@ -1,0 +1,31 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> pronet-3d@1.2.0 build
+> npm --prefix frontend run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> pronet-frontend@1.0.0 build
+> vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 2537 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             1.25 kB │ gzip:   0.59 kB
+dist/assets/index-D6ODZTlU.css              3.55 kB │ gzip:   1.40 kB
+dist/assets/rolldown-runtime-hePW80VL.js    0.71 kB │ gzip:   0.42 kB
+dist/assets/EmptyState-B8W1EpTz.js          2.03 kB │ gzip:   0.75 kB
+dist/assets/Feed-CDTc1O2R.js                3.68 kB │ gzip:   1.67 kB
+dist/assets/Network-DczrMRKX.js             6.57 kB │ gzip:   2.49 kB
+dist/assets/PostCard-DE0-C21B.js            7.26 kB │ gzip:   2.80 kB
+dist/assets/Profile-nqcCy8Ja.js             9.62 kB │ gzip:   3.37 kB
+dist/assets/CareerMatrix-BDWHl8hk.js        9.69 kB │ gzip:   4.13 kB
+dist/assets/Jobs-BRhbLp0y.js               12.41 kB │ gzip:   3.98 kB
+dist/assets/index-CjYsdzAg.js              37.85 kB │ gzip:  11.90 kB
+dist/assets/vendor-mjY826CW.js            123.72 kB │ gzip:  44.79 kB
+dist/assets/ui-vendor-BQQTGxAB.js         477.97 kB │ gzip: 146.62 kB
+dist/assets/three-visual-DogtSYND.js      492.07 kB │ gzip: 123.45 kB
+
+✓ built in 920ms

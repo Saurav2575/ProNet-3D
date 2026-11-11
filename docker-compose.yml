@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongo:7
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - pronet_mongo:/data/db
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - pronet_redis:/data
+volumes:
+  pronet_mongo:
+  pronet_redis:

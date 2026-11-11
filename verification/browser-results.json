@@ -1,0 +1,40 @@
+{
+  "checks": [
+    "Registration through the real website",
+    "Three.js renders, pauses, responds to keyboard tilt, and switches all three display modes",
+    "System reduced-motion preference stops the 3D animation",
+    "Static constellation fallback keeps the website usable without WebGL",
+    "Header Post shortcut opens the working composer",
+    "Feed sidebar suggestions send a real invitation and refresh after success",
+    "Session tokens are absent from browser storage and document.cookie",
+    "Profile edits persist and update the current user",
+    "Profile image upload renders an actual image",
+    "Text and media post creation",
+    "Like and comment interactions from another account",
+    "Send and accept connection invitations",
+    "Recruiter creates a job using the website",
+    "Filtered job search, application form, and persistent application history",
+    "Recruiter applicant tracking and candidate status updates survive reload",
+    "Recruiter closes a listing",
+    "Persistent dark theme and real notification dropdown",
+    "Five authenticated screens have no horizontal overflow at 390, 768, and 1440 px",
+    "Login and registration layouts fit mobile and desktop",
+    "Sign out and sign in through the website",
+    "No uncaught browser JavaScript errors",
+    "autocannon burst exercises rate limiting without connection errors"
+  ],
+  "uncaughtErrors": [],
+  "load": {
+    "requests": 16200,
+    "averageLatencyMs": 1.38,
+    "statusCodes": {
+      "200": {
+        "count": 45
+      },
+      "429": {
+        "count": 16155
+      }
+    },
+    "connectionErrors": 0
+  }
+}

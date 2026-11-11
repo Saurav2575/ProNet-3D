@@ -1,0 +1,437 @@
+{
+  "info": {
+    "name": "ProNet API - final implementation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "API_URL",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "USER_ID",
+      "value": ""
+    },
+    {
+      "key": "POST_ID",
+      "value": ""
+    },
+    {
+      "key": "CONNECTION_ID",
+      "value": ""
+    },
+    {
+      "key": "JOB_ID",
+      "value": ""
+    },
+    {
+      "key": "APPLICATION_ID",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Saurav\",\n  \"lastName\": \"Kumar\",\n  \"email\": \"saurav@example.com\",\n  \"password\": \"Password123!\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"saurav@example.com\",\n  \"password\": \"Password123!\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Current user",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/auth/me"
+      }
+    },
+    {
+      "name": "Refresh session",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{API_URL}}/auth/refresh"
+      }
+    },
+    {
+      "name": "Update profile",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/users/profile",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"headline\": \"React developer\",\n  \"bio\": \"My professional profile\",\n  \"skills\": [\n    \"React\",\n    \"Node.js\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/users/{{USER_ID}}"
+      }
+    },
+    {
+      "name": "Search people",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/users/search?q=React"
+      }
+    },
+    {
+      "name": "Upload image",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{API_URL}}/uploads",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "folder",
+              "type": "text",
+              "value": "profiles"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Suggestions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/users/suggestions"
+      }
+    },
+    {
+      "name": "All posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/posts/feed?page=1&limit=10"
+      }
+    },
+    {
+      "name": "Network feed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/posts/feed?scope=network"
+      }
+    },
+    {
+      "name": "Popular posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/posts/popular"
+      }
+    },
+    {
+      "name": "Create post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/posts",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"My latest project update\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Toggle like",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": "{{API_URL}}/posts/{{POST_ID}}/like"
+      }
+    },
+    {
+      "name": "Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/posts/{{POST_ID}}/comments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Great work!\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete post",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{API_URL}}/posts/{{POST_ID}}"
+      }
+    },
+    {
+      "name": "Connections",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/connections"
+      }
+    },
+    {
+      "name": "Incoming invitations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/connections/pending"
+      }
+    },
+    {
+      "name": "Send invitation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{API_URL}}/connections/request/{{USER_ID}}"
+      }
+    },
+    {
+      "name": "Accept invitation",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/connections/{{CONNECTION_ID}}/respond",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"action\": \"accept\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Search jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/jobs?q=React&location=Pune&type=internship"
+      }
+    },
+    {
+      "name": "Create job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/jobs",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"React developer\",\n  \"company\": \"ProNet Labs\",\n  \"location\": \"Pune\",\n  \"type\": \"internship\",\n  \"description\": \"Build React interfaces.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update job",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/jobs/{{JOB_ID}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"isActive\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Apply",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/jobs/{{JOB_ID}}/apply",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"coverLetter\": \"I am interested in this role and have relevant React experience.\",\n  \"resumeUrl\": \"https://example.com/resume.pdf\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "My applications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/jobs/applications/mine"
+      }
+    },
+    {
+      "name": "Recruiter listings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/jobs/mine"
+      }
+    },
+    {
+      "name": "Applicants",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/jobs/{{JOB_ID}}/applicants"
+      }
+    },
+    {
+      "name": "Application status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_URL}}/jobs/applications/{{APPLICATION_ID}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"shortlisted\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Notifications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{API_URL}}/notifications"
+      }
+    },
+    {
+      "name": "Mark all read",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": "{{API_URL}}/notifications/read-all"
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{API_URL}}/auth/logout"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+import { Button, CircularProgress } from '@mui/material';
+const GoButton = ({ children, loading = false, disabled = false, variant = 'contained', fullWidth = false, size = 'medium', color = 'primary', sx = {}, ...props }) => <Button variant={variant} fullWidth={fullWidth} size={size} color={color} disabled={loading || disabled} sx={{ borderRadius: '9px', fontWeight: 650, minHeight: size === 'small' ? 34 : 42, px: size === 'small' ? 2 : 2.5, '&.Mui-disabled': { opacity: .65 }, ...sx }} {...props}>{loading ? <CircularProgress size={size === 'small' ? 18 : 22} color="inherit" /> : children}</Button>;
+export default GoButton;

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+a { color: inherit; text-decoration: none; }
+textarea { font-family: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: rgba(0,102,255,.18); }
+:focus-visible { outline: 3px solid rgba(0,102,255,.6); outline-offset: 3px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #B9C9D8; border-radius: 99px; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes likePoP { 50% { transform: scale(1.22); } }
+@keyframes orbit { to { transform: rotateZ(360deg); } }
+@keyframes glow { 50% { opacity: .6; } }
+.fade-in-up { animation: fadeInUp .4s ease both; }
+.depth-card { transition: transform .25s ease, box-shadow .25s ease; }
+@media (hover: hover) and (pointer: fine) { .depth-card:hover { transform: perspective(1100px) translateY(-3px) rotateX(1deg) rotateY(-1deg); box-shadow: 0 12px 32px rgba(10,37,64,.11); } }
+.skip-link { position: fixed; top: -80px; left: 12px; z-index: 1600; background: #0066FF; color: #fff; padding: 12px 18px; border-radius: 9px; }
+.skip-link:focus { top: 12px; }
+.constellation-scene { position: relative; isolation: isolate; min-width: 0; overflow: hidden; background: radial-gradient(ellipse at 50% 50%, #123F68 0%, #061A2D 70%); }
+.constellation-scene canvas { display: block; width: 100%; height: 100%; }
+.constellation-scene:focus-visible { outline-offset: -4px; outline-color: #00D4B2; }
+.constellation-mount { height: 100%; width: 100%; }
+.constellation-fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+.constellation-fallback svg { width: min(76%, 340px); height: 86%; }
+.constellation-overlay { position: absolute; inset: 14px 16px auto; display: flex; justify-content: space-between; pointer-events: none; color: #A0C0DA; font: 600 10px/1.5 'Inter', sans-serif; letter-spacing: .09em; }
+.constellation-status { display: flex; align-items: center; gap: 7px; }
+.constellation-status i { width: 6px; height: 6px; border-radius: 50%; background: #00D4B2; }
+.constellation-hint { position: absolute; left: 16px; bottom: 14px; color: #A0C0DA; pointer-events: none; font: 500 10px/1.5 'Inter', sans-serif; }
+.auth-orbit { position: absolute; width: 560px; height: 560px; bottom: -280px; right: -220px; border: 1px solid rgba(0,212,178,.26); border-radius: 50%; box-shadow: 0 0 0 50px rgba(0,212,178,.035), 0 0 0 100px rgba(0,102,255,.035); pointer-events: none; }
+.auth-orbit::before { content: ''; position: absolute; width: 9px; height: 9px; left: 28%; top: 4%; border-radius: 50%; background: #00D4B2; box-shadow: 0 0 22px #00D4B2; }
+.auth-globe { width: 148px; height: 148px; border-radius: 50%; border: 1px solid rgba(0,212,178,.5); background: radial-gradient(circle at 35% 30%, #206FB1, #0A2540 75%); box-shadow: inset -12px -10px 30px rgba(0,0,0,.3), 0 0 50px rgba(0,102,255,.18); position: relative; transform-style: preserve-3d; }
+.auth-globe::before, .auth-globe::after { content: ''; position: absolute; inset: -20px; border-radius: 50%; border: 1px solid rgba(0,212,178,.65); transform: rotateX(65deg) rotateZ(-25deg); }
+.auth-globe::after { inset: -35px; border-color: rgba(0,102,255,.6); transform: rotateY(65deg) rotateZ(25deg); }
+.auth-globe-wrap { perspective: 600px; animation: glow 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .depth-card:hover { transform: none; }
+}

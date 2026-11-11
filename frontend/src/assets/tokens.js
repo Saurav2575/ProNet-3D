@@ -1,0 +1,30 @@
+export const tokens = {
+  primary: '#0066FF', primaryLight: '#5BA2FF', primaryDark: '#0052CC',
+  accent: '#009B86', accentLight: '#00D4B2', secondary: '#0A2540',
+  surface: '#F3F6F9', white: '#FFFFFF', border: '#DCE4ED', borderStrong: '#BACBDD',
+  muted: '#64748B', mutedLight: '#8595A7',
+  success: '#008772', successLight: '#E5FAF4', error: '#D93D4A', errorLight: '#FEE2E2',
+  warning: '#B66A08', warningLight: '#FEF3C7', info: '#0066FF',
+  dark: { bg: '#071827', surface: '#102A40', paper: '#102A40', border: '#244158', muted: '#AAC0D2' },
+  gradient: {
+    primary: 'linear-gradient(125deg, #0A2540, #123F68 65%, #0066FF)',
+    brand: 'linear-gradient(120deg, #0066FF, #0874F9)',
+    hero: 'radial-gradient(circle at 90% 10%, rgba(0,102,255,.28), transparent 35%), linear-gradient(115deg, #0A2540, #123F68)',
+    card: 'linear-gradient(135deg, rgba(0,102,255,.06), rgba(0,212,178,.04))',
+    warm: 'linear-gradient(135deg, #F59E0B, #EF4444)',
+    cover: 'radial-gradient(circle at 82% 35%, rgba(0,212,178,.7), transparent 28%), linear-gradient(125deg, #0A2540, #123F68 65%, #0066FF)',
+  },
+  fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
+  radius: { xs: '4px', sm: '8px', md: '10px', lg: '14px', xl: '20px', full: '9999px' },
+  shadow: {
+    xs: '0 1px 2px rgba(10,37,64,.035)',
+    sm: '0 3px 14px rgba(10,37,64,.045)',
+    md: '0 7px 24px rgba(10,37,64,.09)',
+    lg: '0 14px 38px rgba(10,37,64,.12)',
+    xl: '0 24px 60px rgba(10,37,64,.16)',
+    brand: '0 4px 16px rgba(0,102,255,.2)', brandHover: '0 7px 24px rgba(0,102,255,.28)',
+  },
+  transition: { fast: '.15s ease', normal: '.25s ease', slow: '.4s ease' },
+  zIndex: { navbar: 1100, modal: 1300, tooltip: 1500 },
+};
+export default tokens;

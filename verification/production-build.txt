@@ -1,0 +1,24 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> pronet-frontend@1.0.0 build
+> vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 2532 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             1.24 kB │ gzip:   0.59 kB
+dist/assets/index-D9OKxiBN.css              2.14 kB │ gzip:   0.87 kB
+dist/assets/rolldown-runtime-hePW80VL.js    0.71 kB │ gzip:   0.42 kB
+dist/assets/EmptyState-CK4wdggO.js          2.03 kB │ gzip:   0.76 kB
+dist/assets/Feed-E82mhLO6.js                3.12 kB │ gzip:   1.44 kB
+dist/assets/Network-D0TtzoDH.js             5.67 kB │ gzip:   2.17 kB
+dist/assets/PostCard-B9Y8USXz.js            6.99 kB │ gzip:   2.71 kB
+dist/assets/Profile-I9QLDLNV.js             8.52 kB │ gzip:   3.06 kB
+dist/assets/Jobs-CcspP0Mc.js               11.14 kB │ gzip:   3.50 kB
+dist/assets/index-BOMBXFyG.js              38.97 kB │ gzip:  11.79 kB
+dist/assets/vendor-fZr8aWjt.js            122.65 kB │ gzip:  44.39 kB
+dist/assets/ui-vendor-B_XjT2lB.js         465.20 kB │ gzip: 143.84 kB
+
+✓ built in 751ms

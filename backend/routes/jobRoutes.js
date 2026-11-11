@@ -1,0 +1,14 @@
+import express from 'express';
+import { body } from 'express-validator';
+import { getJobs,createJob,applyToJob,getJob,updateJob,myApplications,myJobs,getApplicants,updateApplication } from '../controllers/jobController.js';
+import { protect } from '../middleware/auth.js';
+import { asyncHandler as wrap } from '../middleware/asyncHandler.js';
+import { validate,validateId,jobValidation,jobUpdateValidation,applicationValidation,paginationValidation,searchValidation } from '../middleware/validate.js';
+const router=express.Router();router.use(protect);router.param('id',validateId);router.param('applicationId',validateId);
+router.get('/',validate([...paginationValidation,...searchValidation]),wrap(getJobs));
+router.get('/applications/mine',wrap(myApplications));router.get('/mine',wrap(myJobs));
+router.put('/applications/:applicationId/status',validate([body('status').isIn(['submitted','reviewing','shortlisted','rejected','hired']).withMessage('Choose a valid application status')]),wrap(updateApplication));
+router.get('/:id',wrap(getJob));router.post('/',validate(jobValidation),wrap(createJob));
+router.put('/:id',validate(jobUpdateValidation),wrap(updateJob));
+router.get('/:id/applicants',wrap(getApplicants));router.post('/:id/apply',validate(applicationValidation),wrap(applyToJob));
+export default router;

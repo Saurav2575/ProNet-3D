@@ -1,0 +1,62 @@
+PASS: Registration through the real website
+PASS: Three.js renders, pauses, responds to keyboard tilt, and switches all three display modes
+PASS: System reduced-motion preference stops the 3D animation
+PASS: Static constellation fallback keeps the website usable without WebGL
+PASS: Header Post shortcut opens the working composer
+PASS: Feed sidebar suggestions send a real invitation and refresh after success
+PASS: Session tokens are absent from browser storage and document.cookie
+PASS: Profile edits persist and update the current user
+PASS: Profile image upload renders an actual image
+PASS: Text and media post creation
+PASS: Like and comment interactions from another account
+PASS: Send and accept connection invitations
+PASS: Recruiter creates a job using the website
+PASS: Filtered job search, application form, and persistent application history
+PASS: Recruiter applicant tracking and candidate status updates survive reload
+PASS: Recruiter closes a listing
+PASS: Persistent dark theme and real notification dropdown
+PASS: Five authenticated screens have no horizontal overflow at 390, 768, and 1440 px
+PASS: Login and registration layouts fit mobile and desktop
+PASS: Sign out and sign in through the website
+PASS: No uncaught browser JavaScript errors
+PASS: autocannon burst exercises rate limiting without connection errors
+{
+  "checks": [
+    "Registration through the real website",
+    "Three.js renders, pauses, responds to keyboard tilt, and switches all three display modes",
+    "System reduced-motion preference stops the 3D animation",
+    "Static constellation fallback keeps the website usable without WebGL",
+    "Header Post shortcut opens the working composer",
+    "Feed sidebar suggestions send a real invitation and refresh after success",
+    "Session tokens are absent from browser storage and document.cookie",
+    "Profile edits persist and update the current user",
+    "Profile image upload renders an actual image",
+    "Text and media post creation",
+    "Like and comment interactions from another account",
+    "Send and accept connection invitations",
+    "Recruiter creates a job using the website",
+    "Filtered job search, application form, and persistent application history",
+    "Recruiter applicant tracking and candidate status updates survive reload",
+    "Recruiter closes a listing",
+    "Persistent dark theme and real notification dropdown",
+    "Five authenticated screens have no horizontal overflow at 390, 768, and 1440 px",
+    "Login and registration layouts fit mobile and desktop",
+    "Sign out and sign in through the website",
+    "No uncaught browser JavaScript errors",
+    "autocannon burst exercises rate limiting without connection errors"
+  ],
+  "uncaughtErrors": [],
+  "load": {
+    "requests": 16200,
+    "averageLatencyMs": 1.38,
+    "statusCodes": {
+      "200": {
+        "count": 45
+      },
+      "429": {
+        "count": 16155
+      }
+    },
+    "connectionErrors": 0
+  }
+}

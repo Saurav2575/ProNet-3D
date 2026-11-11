@@ -1,0 +1,1 @@
+module.exports = { testEnvironment: 'jsdom', testMatch: ['**/src/**/*.test.jsx', '**/src/**/*.test.js'], transform: { '^.+\\.[jt]sx?$': ['babel-jest', { presets: [['@babel/preset-env', { targets: { node: 'current' } }], ['@babel/preset-react', { runtime: 'automatic' }]] }] }, setupFilesAfterEnv: ['<rootDir>/src/tests/setup.js'], clearMocks: true };

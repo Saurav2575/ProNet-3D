@@ -1,0 +1,37 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+import path from 'node:path';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import mongoose from 'mongoose';
+import { errorHandler,notFound } from './middleware/errorHandler.js';
+import { apiLimiter } from './middleware/rateLimiter.js';
+import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import postRoutes from './routes/postRoutes.js';
+import connectionRoutes from './routes/connectionRoutes.js';
+import jobRoutes from './routes/jobRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
+import notificationRoutes from './routes/notificationRoutes.js';
+import { uploadsDirectory } from './services/cloudinary.js';
+const app=express();
+if(process.env.TRUST_PROXY==='1') app.set('trust proxy',1);
+app.use(helmet({contentSecurityPolicy:{directives:{defaultSrc:["'self'"],scriptSrc:["'self'"],styleSrc:["'self'","'unsafe-inline'",'https://fonts.googleapis.com'],fontSrc:["'self'",'https://fonts.gstatic.com','data:'],imgSrc:["'self'",'https:','http:','blob:','data:'],connectSrc:["'self'"]}},crossOriginResourcePolicy:{policy:'cross-origin'}}));
+const origin=process.env.CLIENT_URL||'http://localhost:5173';
+app.use(cors({origin,credentials:true}));
+app.use((req,res,next)=>{
+  if(!['GET','HEAD','OPTIONS'].includes(req.method)&&req.headers.origin&&req.headers.origin!==origin) return res.status(403).json({message:'This request origin is not allowed.'});
+  next();
+});
+app.use(express.json({limit:'1mb'}));app.use(express.urlencoded({extended:false,limit:'1mb'}));app.use(cookieParser());
+app.use('/uploads',express.static(uploadsDirectory,{dotfiles:'deny',maxAge:'1d'}));
+app.use('/api',apiLimiter);
+app.get('/api/health',(req,res)=>res.status(mongoose.connection.readyState===1?200:503).json({status:mongoose.connection.readyState===1?'ok':'unavailable',message:'ProNet API',database:mongoose.connection.readyState===1?'connected':'disconnected'}));
+app.use('/api/auth',authRoutes);app.use('/api/users',userRoutes);app.use('/api/posts',postRoutes);app.use('/api/connections',connectionRoutes);app.use('/api/jobs',jobRoutes);app.use('/api/uploads',uploadRoutes);app.use('/api/notifications',notificationRoutes);
+app.use('/api',notFound);
+const dist=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../frontend/dist');
+if(existsSync(path.join(dist,'index.html'))){app.use(express.static(dist));app.get('*',(req,res)=>res.sendFile(path.join(dist,'index.html')));}
+app.use(notFound);app.use(errorHandler);
+export default app;

@@ -1,0 +1,10 @@
+import express from 'express';
+import { body } from 'express-validator';
+import { sendRequest,getPendingRequests,respondToRequest,getConnections,getConnectionStatus } from '../controllers/connectionController.js';
+import { protect } from '../middleware/auth.js';
+import { asyncHandler as wrap } from '../middleware/asyncHandler.js';
+import { validate,validateId } from '../middleware/validate.js';
+const router=express.Router();router.use(protect);router.param('id',validateId);router.param('userId',validateId);
+router.get('/',wrap(getConnections));router.get('/pending',wrap(getPendingRequests));router.get('/status/:userId',wrap(getConnectionStatus));
+router.post('/request/:userId',wrap(sendRequest));router.put('/:id/respond',validate([body('action').isIn(['accept','reject']).withMessage('Choose accept or reject')]),wrap(respondToRequest));
+export default router;
